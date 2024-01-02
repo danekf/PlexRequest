@@ -34,6 +34,11 @@ app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
 app.use('/api/shows', showRoutes)
 
+//Set Section IDs for Tautilli stuff.
+const getSectionIDs = require('./TautilliCommands/getSectionIDs.js');
+getSectionIDs();
+
+
 
 //MONGOOSE
 const username = process.env.P_CLUSTER_USERNAME;
