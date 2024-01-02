@@ -1,0 +1,33 @@
+.loginContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dropdown {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  color: #e51414;
+  background-color: #ffb17d;
+  border-style: solid;
+  border-color: #ffb17d;
+  border-width: 1px;
+}
+
+form button:hover {
+  color:#ff2c2c;
+  border-style: solid;
+  border-color: #ff2c2c;
+  border-width: 1px;
+}
+
+form input {
+  color: red;
+}

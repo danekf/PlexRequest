@@ -1,0 +1,12 @@
+header {
+  background: #ffb17d;
+}
+
+.requestNew {  
+  color: #e51414;
+  text-decoration: none;  
+}
+
+.requestNew:hover {
+  color:#ff2c2c;
+}
