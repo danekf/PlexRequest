@@ -1,21 +1,94 @@
 //Interface with tautilli to export library
 //https://github.com/Tautulli/Tautulli/wiki/Tautulli-API-Reference#export_metadata
 
+
 const axios = require('axios');
+const getLibrarySections = require('./getSections');
 
-const exportLibrary = (libraryToExport) => {
-  const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
+/*
+@params
+libraryToExport : string
+*/
+const exportLibrary =  async (libraryToExport) => {
+  let librarySections = await getLibrarySections();
   
-  // tautilli command parameters
-  const cmd = "export_metadata"
-  const section_id = 1; //defaulting to 1 for testing, using section name is possible but not guaranteed to work
-  const section_name = libraryToExport;
+  //map into sections we actually are about
+  const sections = (librarySections.map((section)=>{
+    return {
+      section_id: section.section_id,
+      section_name: section.section_name,
+      num_of_items: section.count,
+    }
+  }));
 
-  const URL = tautilliApiEndpoint+cmd;
+  console.log(sections)
+
+  let exportId = undefined;
+  //if section found...
+  if(sections.find((section) => section.section_id === libraryToExport)) {
+    const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
+    const cmd = "export_metadata"
+
+    const section_id = '&section_id='+libraryToExport;
+
+    const URL = tautilliApiEndpoint+cmd+section_id;
+
+    await axios.get(URL)
+      .then((res)=>{
+        exportId = res.data.response.data;
+      })
+      .catch(err => console.log(err)); 
   
-  const request = axios.get(URL)
-    .catch(err => console.log(err)); 
+  } else if (sections.find((section) => section.section_name === libraryToExport)){
+    const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
+    const cmd = "export_metadata"
 
+    const section_name = '&section_name='+libraryToExport;
+
+    const URL = tautilliApiEndpoint+cmd+section_name;
+    
+    await axios.get(URL)
+      .then((res)=>{
+        exportId = res.data.response.data;
+      })
+      .catch(err => console.log(err)); 
+  
+  } else {
+    console.error('Library not found');
+  }
+
+  console.log(exportId);
+  return exportId;
 }
 
-module.exports = exportLibrary;
+
+/*
+@params
+export_id : string
+*/
+const getLibraryExportById = async (export_id) => {
+  const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
+  const cmd = "download_export";
+  
+  const exportId = '&export_id='+export_id;
+
+  const URL = tautilliApiEndpoint+cmd+exportId;
+  
+  let libraryExport = '';
+  await axios.get(URL)
+    .then((response)=> {
+      //do something with response
+      libraryExport = response;
+    })
+    .catch(err => console.log(err)); 
+
+  console.log(libraryExport.data);
+};
+
+
+module.exports = {
+  exportLibrary,
+  getLibraryExportById,
+};
+
+
