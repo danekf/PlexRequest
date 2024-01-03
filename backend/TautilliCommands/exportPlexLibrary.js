@@ -21,17 +21,16 @@ const exportLibrary =  async (libraryToExport) => {
     }
   }));
 
-  console.log(sections)
-
   let exportId = undefined;
-  //if section found...
+  //if section found by id or name...
   if(sections.find((section) => section.section_id === libraryToExport)) {
     const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
     const cmd = "export_metadata"
-
+    
     const section_id = '&section_id='+libraryToExport;
+    const fileFormat = '&file_format=json';
 
-    const URL = tautilliApiEndpoint+cmd+section_id;
+    const URL = tautilliApiEndpoint+cmd+section_id+fileFormat;
 
     await axios.get(URL)
       .then((res)=>{
@@ -44,8 +43,9 @@ const exportLibrary =  async (libraryToExport) => {
     const cmd = "export_metadata"
 
     const section_name = '&section_name='+libraryToExport;
+    const fileFormat = '&file_format=json';
 
-    const URL = tautilliApiEndpoint+cmd+section_name;
+    const URL = tautilliApiEndpoint+cmd+section_id+fileFormat;
     
     await axios.get(URL)
       .then((res)=>{
@@ -57,8 +57,7 @@ const exportLibrary =  async (libraryToExport) => {
     console.error('Library not found');
   }
 
-  console.log(exportId);
-  return exportId;
+  return exportId.export_id;
 }
 
 
@@ -78,11 +77,13 @@ const getLibraryExportById = async (export_id) => {
   await axios.get(URL)
     .then((response)=> {
       //do something with response
-      libraryExport = response;
+      libraryExport = response.data;
     })
     .catch(err => console.log(err)); 
+    
+    console.log(libraryExport);
 
-  console.log(libraryExport.data);
+    return libraryExport;
 };
 
 

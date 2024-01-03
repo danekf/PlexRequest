@@ -34,10 +34,11 @@ app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
 app.use('/api/shows', showRoutes)
 
-
+//TESTING
 const {exportLibrary, getLibraryExportById} = require('./TautilliCommands/exportPlexLibrary');
-//exportLibrary('11');
-getLibraryExportById('8');
+// exportLibrary('11');
+
+getLibraryExportById('10');
 
 
 
