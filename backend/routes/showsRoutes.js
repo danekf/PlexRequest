@@ -1,5 +1,5 @@
 const express = require('express');
-const Show = require('../schemas/showSchema');
+const Show = require('../schemas/requestSchemas/showSchema');
 
 //controllers
 const { 
@@ -9,7 +9,7 @@ const {
   addShow, 
   deleteShow,
   updateShow,
-} = require('../controllers/showsController')
+} = require('../controllers/requestControllers/showsController')
 
 const router = express.Router();
 

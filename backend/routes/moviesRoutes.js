@@ -1,5 +1,5 @@
 const express = require('express');
-const Movie = require('../schemas/movieSchema');
+const Movie = require('../schemas/requestSchemas/movieSchema');
 //controllers
 const { 
   getAllMovies,
@@ -8,7 +8,7 @@ const {
   addMovie,
   deleteMovie,
   updateMovie, 
-} = require('../controllers/moviesController')
+} = require('../controllers/requestControllers/moviesController')
 
 const router = express.Router();
 
