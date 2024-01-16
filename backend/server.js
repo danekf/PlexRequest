@@ -8,7 +8,8 @@ const PORT = process.env.PORT;
 //routes
 const defaultRoute = require('./routes/homeRoutes');
 const movieRoutes  = require('./routes/moviesRoutes');
-const showRoutes = require('./routes/showsRoutes')
+const showRoutes = require('./routes/showsRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 //MIDDLEWARE
 
@@ -20,6 +21,7 @@ const cors = require('cors');
 app.use(cors());
 
   //--access json data in requests
+  +-9
 app.use(express.json());
 
   //--log requests
@@ -27,12 +29,13 @@ app.use( (req, res, next ) => {
   console.log('incoming request...');
   console.log(req.path, req.method);
   next();
-})
+});
 
 //ROUTES
 app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
 app.use('/api/shows', showRoutes)
+app.use('/api/admin', )
 
 //TESTING
 const {exportLibrary, getLibraryExportById} = require('./TautilliCommands/exportPlexLibrary');
@@ -58,4 +61,6 @@ mongoose.connect(pDataURI)
   })
   .catch((error)=>{
     console.log(error);
-  })
+  }
+  )
+

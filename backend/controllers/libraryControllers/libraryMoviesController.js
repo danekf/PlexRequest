@@ -26,7 +26,7 @@ const deleteMovie = async (req, res) => {
     return res.status(400).json({error: 'Error deleting movie, title not found.'})
   }
 
-  res,status(200).json(movie);
+  res.status(200).json(movie);
 
 }
 

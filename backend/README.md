@@ -27,3 +27,10 @@ Will run getSectionIDs.js whenever the server is started.
 Reference for controlling Tautilli and exporting metadata. 
 
 https://github.com/Tautulli/Tautulli/wiki/Tautulli-API-Reference#export_metadata
+
+
+## TODO
+- USER :
+  - Add encryption
+  - Set user cookie
+  

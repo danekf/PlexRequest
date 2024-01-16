@@ -37,9 +37,7 @@ const exportedMovieKeys = {
     type:Boolean,
     required: true,
   },
-  locations: [
-    'E:\\Anime Movies (2)\\Black.Clover.Sword.of.the.Wizard.King.2023.1080p.Dual.Audio.WEBRip.10.bits.DD+.x265-EMBER.mkv'
-  ],
+  locations: [String],
   originalTitle: {
     type:String,
     required: true,
