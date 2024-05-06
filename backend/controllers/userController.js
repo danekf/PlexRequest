@@ -41,4 +41,4 @@ const registerUser = async (req, res) => {
 module.exports = {
   loginUser,
   registerUser,
-}
+} 
