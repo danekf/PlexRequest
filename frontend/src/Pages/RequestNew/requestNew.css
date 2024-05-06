@@ -1,35 +1,35 @@
 .requestContainer {
-  background-color: #f8f8f8; /* Subtle background */
+  background-color: #f8f8f8; 
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  display: flex; /* Maintain potential for layout changes */
+  display: flex; 
   align-items: center;
   flex-direction: column; 
 }
 
 .dropdown {
-  margin-bottom: 20px; /* Increased spacing */
+  margin-bottom: 20px; 
 }
 
 form {
   display: flex;
   flex-direction: column;
-  width: 80%; /* Limit form width for readability */
+  width: 80%; 
   max-width: 500px; /* Prevent form from being too wide */
 }
 
 form input {
-  padding: 10px; /* Input field padding */ 
+  padding: 10px; 
   margin-bottom: 15px;
-  border: 1px solid #ddd; /* Subtle border */
+  border: 1px solid #ddd; 
   border-radius: 3px;
 }
 
 form button {
-  color: white; /* Cleaner contrast */
-  background-color: #e51414; /* Primary red color */
-  border: none; /* Remove default border */
+  color: white; 
+  background-color: #e51414; 
+  border: none; 
   padding: 12px 20px; 
   border-radius: 5px;
   cursor: pointer;
@@ -37,16 +37,16 @@ form button {
 }
 
 form button:hover {
-  background-color: #ff2c2c; /* Darker red on hover */
+  background-color: #ff2c2c; 
 }
 
 .confirmationMessage {
-  background-color: #e8f5e9; /* Light green */
-  color: #2e7d32; /* Darker green */
+  background-color: #e8f5e9; 
+  color: #2e7d32; 
   padding: 15px;
   border-radius: 5px;
   margin-top: 15px;
-  text-align: center; /* Center the message */
+  text-align: center;
 }
 
 @media (max-width: 768px) {
