@@ -21,7 +21,6 @@ const cors = require('cors');
 app.use(cors());
 
   //--access json data in requests
-  +-9
 app.use(express.json());
 
   //--log requests

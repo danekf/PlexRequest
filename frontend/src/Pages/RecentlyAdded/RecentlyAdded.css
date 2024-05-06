@@ -4,7 +4,7 @@
 
 .itemsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
   gap: 20px;
 }
 
@@ -12,5 +12,5 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 15px;
-  /* Add more styles to customize your item display */ 
+
 }
