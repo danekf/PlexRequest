@@ -33,8 +33,8 @@ app.use( (req, res, next ) => {
 //ROUTES
 app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
-app.use('/api/shows', showRoutes)
-app.use('/api/admin', )
+app.use('/api/shows', showRoutes);
+app.use('/api/admin', adminRoutes);
 
 //TESTING
 const {exportLibrary, getLibraryExportById} = require('./TautilliCommands/exportPlexLibrary');
