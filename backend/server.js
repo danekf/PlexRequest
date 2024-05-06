@@ -12,7 +12,7 @@ const showRoutes = require('./routes/showsRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
 //MIDDLEWARE
-
+const isAdminMiddleWare = require('./customMiddleware/isAdminMiddleware');
   //--CORS
 const cors = require('cors');
 
@@ -34,7 +34,7 @@ app.use( (req, res, next ) => {
 app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
 app.use('/api/shows', showRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/api/admin', isAdminMiddleWare ,adminRoutes);
 
 //TESTING
 const {exportLibrary, getLibraryExportById} = require('./TautilliCommands/exportPlexLibrary');

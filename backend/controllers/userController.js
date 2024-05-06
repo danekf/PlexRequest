@@ -1,5 +1,6 @@
 const User = require('../schemas/userSchema');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
@@ -12,7 +13,13 @@ const loginUser = async (req, res) => {
 
     const correctPassword = await bcrypt.compare(password, user.passwordHash); 
     if (correctPassword) {
-      res.status(200).json({ message: 'Login Successful' });
+      const token = jwt.sign(
+        { userId: user._id, isAdmin: user.isAdmin }, // Payload
+        process.env.JWT_SECRET, 
+        // { expiresIn: process.env.JWT_EXPIRY },
+      );
+
+      res.status(200).json({ message: 'Login Successful', token });
     } else {
       res.status(401).json({ error: 'Incorrect username or password' }); 
     }
@@ -37,7 +44,14 @@ const registerUser = async (req, res) => {
       isAdmin: false,
     });
 
-    res.status(201).json({ message: 'User Created' });
+    // Generate JWT upon successful registration
+    const token = jwt.sign(
+      { userId: user._id, isAdmin: user.isAdmin },
+      process.env.JWT_SECRET,
+        // { expiresIn: process.env.JWT_EXPIRY }, 
+    );
+
+    res.status(201).json({ message: 'User Created', token });
   } catch (error) {
     if (error.code === 11000) { // MongoDB duplicate key error
       return res.status(400).json({ error: 'Username or email already exists' });
