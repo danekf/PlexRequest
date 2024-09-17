@@ -10,24 +10,23 @@ const AdminReview = () => {
   useEffect( ()=> {
     const getAllLibraries = async () => {
       const response = await fetch(process.env.REACT_APP_API_URI + '/api/libraries/getAllLibraries');
-      // const response = await fetch(process.env.REACT_APP_API_URI + '/api/movies/recent');
-      // const libraries = await response.json();
-      // if(response.ok) {
-      //   setAllLibraries(libraries)
-      // }
-      console.log(response)
+      const libraries = await response.json();
+      if(response.ok) {
+        setAllLibraries(libraries)
+      }
     }
-
     getAllLibraries();
   },[]);
 
-  // const showLibraries = allLibraries.map((library)=>{
-  //   return <AdminLibrary library = {library} />
-  // })
+  const showLibraries = allLibraries.map((library, index)=>{
+    return (
+      <AdminLibrary library={library} key={index}/>
+    )
+  })
 
   return (
     <div className="adminReview">
-      {/* {showLibraries} */}
+      {showLibraries}
     </div>
   )
 };

@@ -2,7 +2,6 @@ const { getAllLibraries } = require('../../TautilliCommands/libraryCommands');
 
 const getTautiliLibraries = async (req, res) => {
   
-
   try {
     const libraries = await getAllLibraries();
     res.status(200).json(libraries);
