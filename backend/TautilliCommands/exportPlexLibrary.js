@@ -3,14 +3,36 @@
 
 
 const axios = require('axios');
-const getLibrarySections = require('./getSections');
+
+/*
+@params
+*/
+//gets all libraries and returns their details. Useful for admin overview of all plex libraries, among others.
+const getAllLibraries = async () => {
+  const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
+  const cmd = "get_library_names";
+
+  const URL = tautilliApiEndpoint+cmd;
+
+ let allLibraries = '';
+
+  await axios.get(URL)
+    .then((response)=>{
+      //looks weird... but is correct.
+      allLibraries = response.data.response.data;
+    })
+    .catch(err => console.log(err));
+
+    console.log(allLibraries);
+    return allLibraries;
+};
 
 /*
 @params
 libraryToExport : string
 */
 const exportLibrary =  async (libraryToExport) => {
-  let librarySections = await getLibrarySections();
+  let librarySections = await getAllLibraries();
   
   //map into sections we actually are about
   const sections = (librarySections.map((section)=>{
@@ -87,26 +109,6 @@ const getLibraryExportById = async (export_id) => {
     return libraryExport;
 };
 
-/*
-@params
-*/
-//gets all libraries and returns their details. Useful for admin overview of all plex libraries, among others.
-const getAllLibraries = async () => {
-  const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
-  const cmd = "get_library_names";
-
-  const URL = tautilliApiEndpoint+cmd;
-
-  await axios.get(URL)
-    .then((response)=>{
-      //looks weird... but is correct.
-      allLibraries = response.data.response.data;
-    })
-    .catch(err => console.log(err));
-
-    console.log(allLibraries);
-    return allLibraries;
-};
 
 
 module.exports = {
