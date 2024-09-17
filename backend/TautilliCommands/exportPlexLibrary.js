@@ -65,6 +65,7 @@ const exportLibrary =  async (libraryToExport) => {
 @params
 export_id : string
 */
+//Returns data from a library with a given ID. Should be a number but names can also work.
 const getLibraryExportById = async (export_id) => {
   const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
   const cmd = "download_export";
@@ -86,10 +87,32 @@ const getLibraryExportById = async (export_id) => {
     return libraryExport;
 };
 
+/*
+@params
+*/
+//gets all libraries and returns their details. Useful for admin overview of all plex libraries, among others.
+const getAllLibraries = async () => {
+  const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
+  const cmd = "get_library_names";
+
+  const URL = tautilliApiEndpoint+cmd;
+
+  await axios.get(URL)
+    .then((response)=>{
+      //looks weird... but is correct.
+      allLibraries = response.data.response.data;
+    })
+    .catch(err => console.log(err));
+
+    console.log(allLibraries);
+    return allLibraries;
+};
+
 
 module.exports = {
   exportLibrary,
   getLibraryExportById,
+  getAllLibraries,
 };
 
 

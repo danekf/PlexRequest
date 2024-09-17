@@ -37,11 +37,10 @@ app.use('/api/shows', showRoutes);
 app.use('/api/admin', isAdminMiddleWare ,adminRoutes);
 
 //TESTING
-const {exportLibrary, getLibraryExportById} = require('./TautilliCommands/exportPlexLibrary');
-// exportLibrary('11');
+const {getAllLibraries, getLibraryExportById} = require('./TautilliCommands/exportPlexLibrary');
 
-getLibraryExportById('10');
-
+getAllLibraries();
+// getLibraryExportById('10');
 
 
 //MONGOOSE

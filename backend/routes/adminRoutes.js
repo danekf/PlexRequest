@@ -26,6 +26,11 @@ const router = express.Router();
 // router.post('/deleteShow', deleteShow);
 // router.post('/updateShow', updateShow);
 
+const {
+  getAllLibraries,
+} = require('../TautilliCommands/exportPlexLibrary');
+
+router.post('/', getAllLibraries);
 
 
 module.exports = router
