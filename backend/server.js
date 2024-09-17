@@ -37,7 +37,7 @@ app.use('/api/shows', showRoutes);
 app.use('/api/admin', isAdminMiddleWare ,adminRoutes);
 
 //TESTING
-const {getAllLibraries, getLibraryExportById} = require('./TautilliCommands/exportPlexLibrary');
+const {getAllLibraries, getLibraryExportById} = require('./TautilliCommands/libraryCommands');
 
 getAllLibraries();
 // getLibraryExportById('10');
