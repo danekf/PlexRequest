@@ -30,7 +30,7 @@ const {
   getAllLibraries,
 } = require('../TautilliCommands/libraryCommands');
 
-router.post('/', getAllLibraries);
+router.post('/getAllLibraries', getAllLibraries);
 
 
 module.exports = router

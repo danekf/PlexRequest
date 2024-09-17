@@ -10,6 +10,7 @@ const defaultRoute = require('./routes/homeRoutes');
 const movieRoutes  = require('./routes/moviesRoutes');
 const showRoutes = require('./routes/showsRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const libraryRoutes = require('./routes/libraryRoutes');
 
 //MIDDLEWARE
 const isAdminMiddleWare = require('./customMiddleware/isAdminMiddleware');
@@ -34,14 +35,8 @@ app.use( (req, res, next ) => {
 app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
 app.use('/api/shows', showRoutes);
-app.use('/api/admin', isAdminMiddleWare ,adminRoutes);
-
-//TESTING
-const {getAllLibraries, getLibraryExportById} = require('./TautilliCommands/libraryCommands');
-
-getAllLibraries();
-// getLibraryExportById('10');
-
+app.use('/api/libraries', libraryRoutes);
+app.use('/api/admin', isAdminMiddleWare, adminRoutes);
 
 //MONGOOSE
 const username = process.env.P_CLUSTER_USERNAME;

@@ -8,7 +8,7 @@ const axios = require('axios');
 @params
 */
 //gets all libraries and returns their details. Useful for admin overview of all plex libraries, among others.
-const getAllLibraries = async () => {
+const getAllLibraries = async (req, res) => {
   const tautilliApiEndpoint = process.env.TAUTILLI_API_ENDPOINT;
   const cmd = "get_library_names";
 
@@ -22,8 +22,6 @@ const getAllLibraries = async () => {
       allLibraries = response.data.response.data;
     })
     .catch(err => console.log(err));
-
-    console.log(allLibraries);
     return allLibraries;
 };
 

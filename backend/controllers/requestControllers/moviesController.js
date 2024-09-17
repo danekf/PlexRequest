@@ -10,7 +10,7 @@ const getAllMovies = async (req, res) => {
     res.status(400).json({error: error.message});
   }
 
-}
+};
 
 //get recently added movies
 const getRecentlyAddedMovies = async (req, res) => {
@@ -22,7 +22,7 @@ const getRecentlyAddedMovies = async (req, res) => {
     res.status(400).json({error: error.message});
   }
 
-}
+};
 
 
 //getmovie by genre
@@ -41,10 +41,10 @@ const getMoviesByGenre = async (req, res) => {
     res.status(400).json({error: error.message});
   }
 
-}
+};
 
 module.exports = {
   getAllMovies,
   getRecentlyAddedMovies,
   getMoviesByGenre,
-}
+};

@@ -28,9 +28,9 @@ function App() {
 
             {/* Protected routes */}
             <Route path='admin' element={
-              <AdminProtectedRoute>
+              // <AdminProtectedRoute>
                 <AdminReview  />
-              </AdminProtectedRoute>
+              // </AdminProtectedRoute>
             } />
 
             <Route path='*' element={<h1>Page not found.</h1>} />
