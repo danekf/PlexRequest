@@ -14,7 +14,7 @@ The plan is to build a functional site. And then use the skeleton as a base from
   <li>express @ 4.18.12</li>
   <li>Redux </li>
   <li>Redux js </li>
-  <li> Redux-persist </li>
+  <li>Redux-persist </li>
 </ul>
 
 ## Setup

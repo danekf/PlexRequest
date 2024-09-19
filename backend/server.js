@@ -8,10 +8,12 @@ const PORT = process.env.PORT;
 //routes
 const defaultRoute = require('./routes/homeRoutes');
 const movieRoutes  = require('./routes/moviesRoutes');
-const showRoutes = require('./routes/showsRoutes')
+const showRoutes = require('./routes/showsRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const libraryRoutes = require('./routes/libraryRoutes');
 
 //MIDDLEWARE
-
+const isAdminMiddleWare = require('./customMiddleware/isAdminMiddleware');
   //--CORS
 const cors = require('cors');
 
@@ -27,13 +29,14 @@ app.use( (req, res, next ) => {
   console.log('incoming request...');
   console.log(req.path, req.method);
   next();
-})
+});
 
 //ROUTES
 app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
-app.use('/api/shows', showRoutes)
-
+app.use('/api/shows', showRoutes);
+app.use('/api/libraries', libraryRoutes);
+app.use('/api/admin', isAdminMiddleWare, adminRoutes);
 
 //MONGOOSE
 const username = process.env.P_CLUSTER_USERNAME;
@@ -51,4 +54,6 @@ mongoose.connect(pDataURI)
   })
   .catch((error)=>{
     console.log(error);
-  })
+  }
+  )
+

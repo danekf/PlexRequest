@@ -1,35 +1,56 @@
 .requestContainer {
-  display: flex;
+  background-color: #f8f8f8; 
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  display: flex; 
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; 
 }
 
 .dropdown {
-  margin-bottom: 10px;
+  margin-bottom: 20px; 
 }
 
 form {
   display: flex;
   flex-direction: column;
-}
-
-form button {
-  color: #e51414;
-  background-color: #ffb17d;
-  border-style: solid;
-  border-color: #ffb17d;
-  border-width: 1px;
-}
-
-form button:hover {
-  color:#ff2c2c;
-  border-style: solid;
-  border-color: #ff2c2c;
-  border-width: 1px;
+  width: 80%; 
+  max-width: 500px; /* Prevent form from being too wide */
 }
 
 form input {
-  color: red;
+  padding: 10px; 
+  margin-bottom: 15px;
+  border: 1px solid #ddd; 
+  border-radius: 3px;
 }
 
+form button {
+  color: white; 
+  background-color: #e51414; 
+  border: none; 
+  padding: 12px 20px; 
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
 
+form button:hover {
+  background-color: #ff2c2c; 
+}
+
+.confirmationMessage {
+  background-color: #e8f5e9; 
+  color: #2e7d32; 
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 95%; 
+  }
+}

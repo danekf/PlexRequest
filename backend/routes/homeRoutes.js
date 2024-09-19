@@ -1,13 +1,14 @@
 const express = require('express');
 
 const router = express.Router();
+const {
+  loginUser,
+  registerUser,
+} = require('../controllers/userController');
 
-router.get('/', (req, res) => {
-  res.send('home screen')
-});
+//Routes
+router.post('/login', loginUser);
+router.post('/register', registerUser);
 
-router.post('/', (req,res) => {
-
-});
 
 module.exports = router
