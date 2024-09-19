@@ -2,7 +2,6 @@ const Movie = require('../../schemas/requestSchemas/movieSchema');
 
 //get all movies
 const getAllMovies = async (req, res) => {
-
   try {
     const movies = await Movie.find({status: 'complete'}).sort({year: -1});
     res.status(200).json(movies);

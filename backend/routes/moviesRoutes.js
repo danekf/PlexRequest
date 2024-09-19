@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 
-router.get('/', getAllMovies);
+router.get('/getAll', getAllMovies);
 router.get('/recent', getRecentlyAddedMovies);
 router.get('/genre/:genre', getMoviesByGenre);
 // router.post('/', addMovie);

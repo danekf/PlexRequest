@@ -13,7 +13,7 @@ const {
 
 const router = express.Router();
 
-router.get('/', getAllShows);
+router.get('/getAll', getAllShows);
 router.get('/recent', getRecentlyAddedShows);
 router.get('/genre/:genre', getShowsByGenre);
 // router.post('/', addShow);
