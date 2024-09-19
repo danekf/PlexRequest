@@ -8,13 +8,20 @@ const AdminLibrary = (props) => {
   const { library, index } = props;
 
   const [ items, setItems ] = useState([]);
+  const [ loadingerror, setLoadingError ] = useState(false);
   const [ showItems, setShowItems ] = useState(false);
   const [ loading, setLoading ] = useState(true);
 
+
   const getLibraryItems = async () => {
     const allLibraryItems = await getAllLibraryItems(library);
-    setItems(allLibraryItems);
-    setLoading(false);
+    if(allLibraryItems){
+      setItems(allLibraryItems);
+      setLoadingError(false);
+      setLoading(false);
+    } else{
+      setLoadingError(true);
+    };
   }; 
 
   const libraryOnClick = () => {
@@ -46,15 +53,28 @@ const AdminLibrary = (props) => {
   //items list
   let itemList;
     //if items are to be shown, itemList is a div and ul of items, otherwise it is nothing.
-  if(showItems){
+  if(showItems && !loading){
     itemList = (
-      <div className="items">
+      <div className="itemList">
         <ul>
           {itemsContainer}
         </ul>
       </div>
     );
+  } else if(showItems && loading && !loadingerror){
+    itemList = (
+      <div className="itemList">
+        Loading items...
+      </div>
+    );
+  } else if(loadingerror && showItems){
+    itemList = (
+      <div className="itemList Error">
+        There was an error loading items.
+      </div>
+    )
   };
+
   //////////////
 
   return (

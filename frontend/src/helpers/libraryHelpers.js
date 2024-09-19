@@ -22,7 +22,7 @@ const getAllLibraryItems = async (library) => {
   if(response.ok) {
     return response.json();
   } else {
-    console.error({error: 'Unable to get' + library.section_name + ' library items.'});
+    console.error({error: 'Unable to get ' + library.section_name + ' library items.'});
   }
 };
 
@@ -31,7 +31,7 @@ const getRecentLibraryItems = async (library) => {
   if(response.ok) {
     return response.json();
   } else {
-    console.error({error: 'Unable to get recent' + library.section_name + ' library items'});
+    console.error({error: 'Unable to get recent ' + library.section_name + ' library items'});
   }
 }
 

@@ -2,12 +2,16 @@
 
 }
 
-.items {
+.itemList {
   display: flex;
   flex-direction: column;
 }
 
-.items li {
+.itemList li {
   list-style-type:none;
 }
 
+.Error {
+  color: red;
+  font-weight: 600;
+}
