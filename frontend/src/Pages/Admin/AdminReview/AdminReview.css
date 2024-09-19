@@ -1,0 +1,4 @@
+.adminReview {
+  display: flex;
+  flex-direction: column;
+}

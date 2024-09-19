@@ -1,5 +1,7 @@
+import './AdminReview.css'
 import { useEffect, useState } from "react"
 import AdminLibrary from "./AdminLibrary/AdminLibrary";
+import { getAllLibraries } from "../../../helpers/libraryHelpers";
 
 
 
@@ -8,25 +10,23 @@ const AdminReview = () => {
 
   //get all libraries on first load to populate admin dashboard.
   useEffect( ()=> {
-    const getAllLibraries = async () => {
-      const response = await fetch(process.env.REACT_APP_API_URI + '/api/libraries/getAllLibraries');
-      const libraries = await response.json();
-      if(response.ok) {
-        setAllLibraries(libraries)
-      }
+    const fetchLibraries = async () => {
+      const librariesResponse = await getAllLibraries();
+      setAllLibraries(librariesResponse);
     }
-    getAllLibraries();
+
+    fetchLibraries();
   },[]);
 
-  const showLibraries = allLibraries.map((library, index)=>{
-    return (
+  const adminLibraries = allLibraries.map((library, index)=>{
+    return ( 
       <AdminLibrary library={library} key={index}/>
     )
   })
 
   return (
     <div className="adminReview">
-      {showLibraries}
+      {adminLibraries}
     </div>
   )
 };

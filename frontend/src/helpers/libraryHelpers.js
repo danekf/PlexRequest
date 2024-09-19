@@ -1,3 +1,12 @@
+const getAllLibraries = async () => {
+  const response = await fetch(process.env.REACT_APP_API_URI + '/api/libraries/getAllLibraries');
+  if(response.ok) {
+    return response.json();
+  } else {
+    console.error({error: 'Unable to get All Libraries'});
+  }
+}
+
 
 /* 
   @params
@@ -10,16 +19,25 @@
 */
 const getAllLibraryItems = async (library) => {
   const response = await fetch(process.env.REACT_APP_API_URI + '/api/' + library.section_name.toLowerCase() + '/getAll');
-  return response.json();
+  if(response.ok) {
+    return response.json();
+  } else {
+    console.error({error: 'Unable to get' + library.section_name + ' library items.'});
+  }
 };
 
 const getRecentLibraryItems = async (library) => {
   const response = await fetch(process.env.REACT_APP_API_URI + '/api/' + library.section_name.toLowerCase() + '/recent');
-  return response.json();
+  if(response.ok) {
+    return response.json();
+  } else {
+    console.error({error: 'Unable to get recent' + library.section_name + ' library items'});
+  }
 }
 
 
 module.exports = {
+  getAllLibraries,
   getAllLibraryItems,
   getRecentLibraryItems,
 }
