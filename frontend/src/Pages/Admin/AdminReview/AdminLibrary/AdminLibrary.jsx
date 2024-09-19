@@ -44,7 +44,7 @@ const AdminLibrary = (props) => {
     itemsContainer = items.map((item, index)=>{
       return(
         <li key={index}>
-          {item.title}
+          <LibraryItem item={item} />
         </li>
       );
     });
@@ -52,7 +52,7 @@ const AdminLibrary = (props) => {
 
   //items list
   let itemList;
-    //if items are to be shown, itemList is a div and ul of items, otherwise it is nothing.
+    //Conditional rendering of the item list based on current state.
   if(showItems && !loading){
     itemList = (
       <div className="itemList">
@@ -72,7 +72,7 @@ const AdminLibrary = (props) => {
       <div className="itemList Error">
         There was an error loading items.
       </div>
-    )
+    );
   };
 
   //////////////
@@ -81,7 +81,6 @@ const AdminLibrary = (props) => {
     <div className="library" key={index} onClick={libraryOnClick}>
       ({library.section_id}){library.section_name}
       {itemList}
-
     </div>
   )
 
