@@ -9,6 +9,7 @@ import Home from './Pages/Home/Home';
 import RequestNew from './Pages/RequestNew/RequestNew';
 import Login from './Pages/Login/Login';
 import RecentlyAdded from './Pages/RecentlyAdded/RecentlyAdded';
+import RegisterUser from './Pages/RegisterUser/RegisterUser';
 
 //protected route imports
 import AdminReview from './Pages/Admin/AdminReview/AdminReview';
@@ -25,12 +26,13 @@ function App() {
             <Route path='/requestNew' element={<RequestNew />} />
             <Route path='/login' element={<Login />} />
             <Route path='/recentlyAdded' element={<RecentlyAdded />} />
+            <Route path='/register' element={<RegisterUser />} />
 
             {/* Protected routes */}
             <Route path='admin' element={
-              // <AdminProtectedRoute>
+              <AdminProtectedRoute>
                 <AdminReview  />
-              // </AdminProtectedRoute>
+              </AdminProtectedRoute>
             } />
 
             <Route path='*' element={<h1>Page not found.</h1>} />

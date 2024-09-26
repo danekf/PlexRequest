@@ -3,12 +3,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const loginUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { userName, password } = req.body;
 
   try {
-    const user = await User.findOne({ username: username }); 
+    const user = await User.findOne({ userName: userName }); 
     if (!user) {
-      return res.status(401).json({ error: 'Incorrect username or password' });
+      return res.status(401).json({ error: 'Incorrect userName or password' });
     }
 
     const correctPassword = await bcrypt.compare(password, user.passwordHash); 
@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
 }
 
 const registerUser = async (req, res) => {
-  const { username, password, email } = req.body;
+  const { userName, password, email } = req.body;
 
   //bcrypt
   try {
@@ -38,7 +38,7 @@ const registerUser = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
     const user = await User.create({
-      username: username,
+      userName: userName,
       passwordHash: passwordHash, 
       email: email,
       isAdmin: false,
