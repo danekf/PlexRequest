@@ -1,6 +1,5 @@
 const express = require('express');
-const Movie = require('../schemas/requestSchemas/movieSchema');
-//controllers
+
 const { 
   getAllMovies,
   getRecentlyAddedMovies,

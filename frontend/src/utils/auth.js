@@ -33,7 +33,8 @@ export const registerUserWithBackend = async (user) => {
   })
   .then((response)=>{
     console.log(response);
+    //set jwt https://clerk.com/blog/adding-jwt-authentication-to-react
   })
 
-}
+};
 

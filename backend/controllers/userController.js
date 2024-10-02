@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-}
+};
 
 const registerUser = async (req, res) => {
   const { userName, password, email } = req.body;

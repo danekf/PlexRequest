@@ -22,7 +22,7 @@ const AdminReview = () => {
     return ( 
       <AdminLibrary library={library} key={index}/>
     )
-  })
+  });
 
   return (
     <div className="adminReview">

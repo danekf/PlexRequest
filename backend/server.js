@@ -11,6 +11,7 @@ const movieRoutes  = require('./routes/moviesRoutes');
 const showRoutes = require('./routes/showsRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const libraryRoutes = require('./routes/libraryRoutes');
+const projectRoutes = require('./routes/projectsRoutes');
 
 //MIDDLEWARE
 const isAdminMiddleWare = require('./customMiddleware/isAdminMiddleware');
@@ -36,6 +37,9 @@ app.use('/', defaultRoute);
 app.use('/api/movies', movieRoutes);
 app.use('/api/shows', showRoutes);
 app.use('/api/libraries', libraryRoutes);
+app.use('/api/projects', projectRoutes);
+
+//admin only routes
 app.use('/api/admin', isAdminMiddleWare, adminRoutes);
 
 //MONGOOSE

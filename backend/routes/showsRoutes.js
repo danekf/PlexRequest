@@ -1,7 +1,5 @@
 const express = require('express');
-const Show = require('../schemas/requestSchemas/showSchema');
 
-//controllers
 const { 
   getAllShows,
   getRecentlyAddedShows,
